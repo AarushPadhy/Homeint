@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiasai Interiors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 8px;
+        }
+
+        .filters button, .filters a {
+            padding: 12px 25px;
+            margin: 8px;
+            border: none;
+            background-color: #008080;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .filters button:hover, .filters a:hover {
+            background-color: #006666;
+            transform: translateY(-2px);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 25px;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #e0e0e0;
+            border-top: 1px solid #ccc;
+        }
+
+        @media (max-width: 600px) {
+            .filters {
+                flex-direction: column;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Kiasai Interior Vault</h1>
+        </header>
+
+        <div class="filters">
+            <button onclick="showGallery('living')">Living Room</button>
+            <button onclick="showGallery('bedroom')">Bedroom</button>
+            <button onclick="showGallery('kitchen')">Kitchen</button>
+            <button onclick="showGallery('pooja')">Pooja Units</button>
+            <button onclick="showGallery('wardrobes')">Wardrobes</button>
+            <button onclick="showGallery('all')">Show All</button>
+            <a href="index.html">Back to Home Page</a>
+        </div>
+
+        <div class="gallery" id="gallery"></div>
+
+        <footer>
+            <p>&copy; All rights reserved to Aarush Padhy</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        async function fetchImages() {
+            try {
+                const response = await fetch('images.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load images.json: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error("Error fetching images:", error);
+                alert("Error loading images. Check the console for details.");
+                return {};
+            }
+        }
+
+        async function filterImages(category) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            const images = await fetchImages();
+            let imageArray = [];
+
+            if (category === 'all') {
+                for (const cat in images) {
+                    imageArray = imageArray.concat(images[cat].map(img => ({
+                        src: `images/${cat.toLowerCase()}/${img}`,
+                        category: cat
+                    })));
+                }
+            } else {
+                const normalizedCategory = category.toLowerCase();
+                if (images[normalizedCategory]) {
+                    imageArray = images[normalizedCategory].map(img => ({
+                        src: `images/${normalizedCategory}/${img}`,
+                        category
+                    }));
+                } else {
+                    console.warn(`No images found for category: ${category}`);
+                    alert("No images available for this category.");
+                }
+            }
+
+            if (imageArray.length === 0) {
+                gallery.innerHTML = '<p style="text-align: center;">No images found.</p>';
+            } else {
+                shuffleArray(imageArray);
+                loadImages(imageArray);
+            }
+        }
+
+        function loadImages(imageArray) {
+            const gallery = document.getElementById('gallery');
+            imageArray.forEach(image => {
+                const imgElement = document.createElement('a');
+                imgElement.href = image.src;
+                imgElement.setAttribute('data-lightbox', 'gallery');
+                imgElement.setAttribute('data-category', image.category);
+
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = `${image.category} Image`;
+                img.onerror = function() {
+                    console.error(`Image failed to load: ${image.src}`);
+                };
+
+                imgElement.appendChild(img);
+                gallery.appendChild(imgElement);
+            });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        async function showGallery(category) {
+            await filterImages(category);
+        }
+
+        // Load all images when the page loads
+        window.onload = async function() {
+            await showGallery('all');
+        };
+    </script>
+</body>
+</html>

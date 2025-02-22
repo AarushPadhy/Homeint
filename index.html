@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="images/favicon.png" type="image/gif" />
+
+  <title>Kiasai Interiors</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- Fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Lightbox Gallery -->
+  <link rel="stylesheet" href="css/ekko-lightbox.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Desktop Styles (Larger Screens) */
+    body {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .layout_padding {
+      padding: 45px;
+    }
+
+    .detail-box p {
+      font-size: 1rem;
+    }
+
+    /* Gallery - Desktop View */
+    #gallery .row {
+      display: flex;
+      flex-wrap: wrap; /* Allow images to wrap to the next line */
+    }
+
+    #gallery .col-sm-8,
+    #gallery .col-sm-4,
+    #gallery .col-md-6,
+    #gallery .col-md-3 {
+      flex: 0 0 auto;
+      width: auto; /* Adjust width as needed for desktop */
+      display: block; /* Ensure images are visible */
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 767px) {
+      body {
+        font-size: 14px; /* Smaller font size for better readability */
+      }
+
+      h2 {
+        font-size: 1.3rem; /* Smaller heading size */
+      }
+
+      .layout_padding {
+        padding: 20px; /* Reduced padding for smaller screens */
+      }
+
+      .detail-box p {
+        font-size: 0.8rem; /* Smaller paragraph text */
+      }
+
+      /* Hide unnecessary sections */
+      #about,
+      #service,
+      #testimonial,
+      #gallery {
+        display: none;
+      }
+
+      /* Hide Carousel Arrows */
+      .carousel_btn_box {
+        display: none;
+      }
+
+      /* Hide slider section arrows */
+      .slider_section .carousel_btn_box {
+        display: none;
+      }
+
+      .info_section {
+        padding: 20px;
+      }
+
+      .info_contact a {
+        font-size: 0.7rem;
+      }
+
+      .social_box a {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+      }
+    }
+
+    /* Hover Animations */
+    .img-box {
+      overflow: hidden;
+    }
+
+    .img-box img {
+      transition: transform 0.3s ease;
+    }
+
+    .img-box:hover img {
+      transform: scale(1.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade-in.active {
+      opacity: 1;
+    }
+
+    /* Center the download button */
+    .download-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Style the download button */
+    .download-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: #6a1b9a; /* Purple color */
+      color: #fff;
+      text-align: center;
+      border-radius: 5px; /* Rounded corners */
+      font-size: 0.875rem;
+      margin-top: 10px;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #4a148c; /* Darker purple on hover */
+    }
+
+    /* Center About Us heading */
+    .about_section .heading_container {
+      text-align: center;
+    }
+       /* Ensure the slider image scales correctly */
+       .slider_section .img-box {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slider_section .img-box img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* Centered Contact Section with White Border */
+    .contact_section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .contact_container {
+      padding: 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 600px;
+    }
+    
+    /* Gallery Section */
+    .gallery_section {
+            text-align: center;
+            padding: 2vw;
+        }
+
+        .gallery_section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 10px;
+            justify-content: center;
+            max-width: 80%;
+            margin: auto;
+        }
+
+        .gallery-grid img {
+            width: 300px;
+            height: 225px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, auto);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, auto);
+            }
+            .contact-form {
+                padding: 1.5rem;
+            }
+            .gallery_section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(8, auto);
+            }
+        }
+
+        .view-all-btn {
+            margin-top: 15px;
+        }
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <!-- header section -->
+  <header class="header_section innerpage_header">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="index.html">
+          <span><img src="images/your-image.jpg" width="120" height="55" alt="KIASAI INTERIOR" />&ensp;&ensp;
+            KIASAI INTERIOR LIVESPACE
+          </span>
+        </a>
+        <div class="" id="">
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+                <a href="project.html" class="nav-item nav-link">Projects</a>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+
+  <!-- slider section -->
+  <section class="slider_section position-relative">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="img_container">
+            <div class="img-box">
+              <img src="images/slider-bg.jpg" class="" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="img_container">
+            <div class="img-box">
+              <img src="images/slider-bg.jpg" class="" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="img_container">
+            <div class="img-box">
+              <img src="images/slider-bg.jpg" class="" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel_btn_box">
+        <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div class="detail-box">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="inner_detail-box">
+          <h1>
+            Kiasai Interior Livespace
+          </h1>
+          <p>
+            "Home is where we should feel most alive and in harmony with our surroundings. The essence of a beautiful interior lies in how it makes us feel."
+          </p>
+          <div>
+            <a href="contact.html" class="btn btn-primary slider-link">
+                Get Free Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end slider section -->
+
+  <!-- about section -->
+  <section id="about" class="about_section layout_padding fade-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+            <p> <br>For Additional Information. Please refer to the document below.</p>
+            <div class="download-container">
+              <a href="KIASAI INTERIOR LIVESPACE.pdf" download class="download-btn">Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; About Us
+              </h2>
+            </div>
+            <p>
+              At Kiasai Interiors, we are dedicated to crafting exceptional home interiors that transcend mere aesthetics, focusing on creating spaces that resonate with your unique lifestyle and aspirations. Our unwavering commitment to delivering unparalleled quality is the cornerstone of our philosophy, ensuring every project reflects the highest standards of craftsmanship and design. We understand that a home is a sanctuary, a personal expression, and a repository of cherished memories.
+
+Our meticulous attention to detail is evident in every facet of our work. We believe that true excellence lies in the harmonious fusion of aesthetics and functionality. To achieve this, we utilize only the finest materials, sourced from trusted suppliers, and employ innovative techniques that push the boundaries of design. Our talented team of designers collaborates closely with each client, fostering a deep understanding of their vision and preferences. This collaborative approach guarantees that every project is a genuine reflection of the client's individuality.
+
+We are passionate about creating enduring spaces that stand the test of time, both in style and durability. Our commitment to sustainability is woven into our material choices and construction practices. We believe that your home should be an investment, a reflection of your dreams, and we are dedicated to making those dreams a reality. From the initial consultation to the final installation, we strive to provide a seamless and stress-free experience, exceeding your expectations at every turn. With Kiasai Interiors, you can expect nothing less than perfection in every aspect of your home's design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end about section -->
+
+
+<!-- Gallery Section -->
+<div class="gallery_section layout_padding2">
+  <div class="container-fluid">
+    <div class="heading_container heading_center">
+      <h2>
+        Gallery
+      </h2>
+    </div>
+    <div class="row">
+      <div class=" col-sm-8 col-md-6 px-0">
+        <div class="img-box">
+          <img src="images/g1.jpg" alt="">
+          <a href="images/g1.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-3 px-0">
+        <div class="img-box">
+          <img src="images/g2.jpg" alt="">
+          <a href="images/g2.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 px-0">
+        <div class="img-box">
+          <img src="images/g3.jpg" alt="">
+          <a href="images/g3.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 px-0">
+        <div class="img-box">
+          <img src="images/g4.jpg" alt="">
+          <a href="images/g4.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-3 px-0">
+        <div class="img-box">
+          <img src="images/g5.jpg" alt="">
+          <a href="images/g5.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-8 col-md-6 px-0">
+        <div class="img-box">
+          <img src="images/g6.jpg" alt="">
+          <a href="images/g6.jpg" data-toggle="lightbox" data-gallery="gallery">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <a href="gallery.html" class="nav-item nav-link">View All</a>
+    </div>
+  </div>
+</div>
+
+  <!-- end gallery section -->
+
+  <!-- service section -->
+  <section id="service" class="service_section layout_padding fade-in">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Services
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/s1.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Home interiors
+              </h5>
+              <p>
+                At Kiasai Interiors, we deliver home interiors of unparalleled quality. Our meticulous attention to detail and commitment to excellence ensure that every project reflects the highest standards of craftsmanship and design. We use the finest materials and innovative techniques to create spaces that are beautiful and enduring. Our talented designers work closely with clients to understand their vision and transform it into reality, resulting in interiors that are both functional and aesthetically stunning. With Kiasai Interiors, you can expect perfection in every aspect of your home's design.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/s2.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Commercial Interiors
+              </h5>
+              <p>
+                At Kiasai Interiors, we excel in delivering efficient and elegant construction solutions. Our commitment to quality, innovation, and customer satisfaction sets us apart. From residential to commercial projects, we bring meticulous attention to detail and a dedication to excellence. Our experienced team collaborates closely with clients to turn their unique visions into reality with precision and care. With Kiasai Interiors, your project will be handled with professionalism, expertise, and a passion for creating exceptional spaces. Let's build the future together.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/s3.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Architecture
+              </h5>
+              <p>
+                At Kiasai Interiors, we create architectural spaces that inspire and delight. Our holistic approach integrates innovative architecture with luxurious interiors, ensuring a seamless blend of form and function. Our expert team transforms your vision into reality, crafting spaces that are aesthetically pleasing, functional, and tailored to your lifestyle. Whether it’s modern minimalist or classic timeless design, we reflect your unique taste and elevate your living experience. Choose Kiasai Interior for a harmonious blend of architectural excellence and interior elegance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end service section -->
+
+  <!-- client section -->
+  <section id="testimonial" class="client_section layout_padding fade-in">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Testimonial
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="images/client.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                        Shonali P.
+                      </h6>
+                    </div>
+                    <p>
+                      "Kiasai Interior transformed my space into a beautiful and functional haven. Their creativity, attention to detail, and professionalism were outstanding. I'm thrilled with the results and highly recommend them for exceptional interior design services!"
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="images/client2.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                         Aahana Padhy
+                      </h6>
+                    </div>
+                    <p>
+                      "Kiasai Interior took my home to the next level. Their team was incredibly professional and brought my ideas to life with creativity and precision. I'm beyond satisfied with the transformation. I highly recommend them for anyone looking to elevate their interior space!"
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="images/client3.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                         Hannan Israeli
+                      </h6>
+                    </div>
+                    <p>
+                      "Kiasai Interior did a fantastic job revamping my space. Their team's creativity and keen eye for detail brought my vision to life. They were professional and easy to work with throughout the process. Highly recommended for anyone looking to transform their home or office!"
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end client section -->
+
+  <!-- info section -->
+  <section id="contact" class="info_section fade-in">
+    <div class="container">
+      <div class="row info_main_row">
+        <div class="col-md-6 col-lg-3">
+          <div class="info_insta">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h4>
+            Contact Us
+          </h4>
+          <div class="info_contact">
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap">
+              <div>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+            </script>
+            <a>
+              <span>
+                <a href="tel:+91 76761 41883">
+                  Call +91 7676141883
+                </a>
+              </span>
+            </a>
+            <a href=mailto:"info@kiasaiinterior.com">
+              <i class="fa fa-envelope"></i>
+              <span>
+                info@kiasaiinterior.com
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h4>
+            Follow Us
+          </h4>
+          <div class="social_box">
+            <a href="https://www.facebook.com/KiaSaiInteriors?mibextid=ZbWKwL">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.youtube.com/@KiaSaiInteriorLiveSpace">
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="https://instagram.com/kiasai_interior?igshid=ZGUzMzM3NWJiOQ==">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <a href="https://instagram.com/kiasai_interior?igshid=ZGUzMzM3NWJiOQ==">
+                <i class="fa fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a>Aarush Padhy</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- lightbox Gallery-->
+  <script src="js/ekko-lightbox.min.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+
+  <!-- Initialize Lightbox -->
+  <script>
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+
+    // Scroll Animation
+    $(window).scroll(function () {
+      $(".fade-in").each(function () {
+        var position = $(this).offset().top;
+        var windowHeight = $(window).height();
+        if (position < windowHeight + $(window).scrollTop() - 150) {
+          $(this).addClass("active");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
