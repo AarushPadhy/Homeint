@@ -74,56 +74,7 @@
     }
 
     /* Mobile view adjustments */
-    @media (max-width: 767px) {
-      body {
-        font-size: 14px; /* Smaller font size for better readability */
-      }
 
-      h2 {
-        font-size: 1.3rem; /* Smaller heading size */
-      }
-
-      .layout_padding {
-        padding: 20px; /* Reduced padding for smaller screens */
-      }
-
-      .detail-box p {
-        font-size: 0.8rem; /* Smaller paragraph text */
-      }
-
-      /* Hide unnecessary sections */
-      #about,
-      #service,
-      #testimonial,
-      #gallery {
-        display: none;
-      }
-
-      /* Hide Carousel Arrows */
-      .carousel_btn_box {
-        display: none;
-      }
-
-      /* Hide slider section arrows */
-      .slider_section .carousel_btn_box {
-        display: none;
-      }
-
-      .info_section {
-        padding: 20px;
-      }
-
-      .info_contact a {
-        font-size: 0.7rem;
-      }
-
-      .social_box a {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 14px;
-      }
-    }
 
     /* Hover Animations */
     .img-box {
@@ -249,7 +200,8 @@
         .gallery-grid img:hover {
             transform: scale(1.05);
         }
-        @media (max-width: 1024px) {
+            /* Force Desktop Layout on Mobile */
+    @media (max-width: 1024px) {
         body {
             width: 1024px !important;
             overflow-x: auto;
@@ -277,19 +229,21 @@
             display: none !important;
         }
 
-        /* Zoom in the Contact Us section */
+        /* Make the Contact Us container larger */
         .contact_container {
-            transform: scale(1.12); /* Increase size */
+            transform: scale(2); /* Zoom in more */
             transform-origin: center; /* Keep it centered */
-            max-width: 90% !important;
-            padding: 25px !important;
+            width: 80% !important; /* Increase width */
+            max-width: 800px !important; /* Prevent it from being too wide */
+            padding: 40px !important; /* Increase padding */
         }
 
+        /* Ensure Contact Us remains visible and centered */
         .contact_section {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 0;
+            padding: 80px 0; /* More padding for spacing */
         }
     }
 
