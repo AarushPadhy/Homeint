@@ -279,6 +279,30 @@
         .view-all-btn {
             margin-top: 15px;
         }
+    @media (max-width: 767px) {
+    .footer_section {
+        display: block !important; /* Force visibility */
+        position: relative; /* Ensure it stays in the flow */
+        width: 100%;
+        background: #222; /* Adjust background color if needed */
+        color: white; /* Ensure text is readable */
+        padding: 20px;
+        text-align: center;
+    }
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_section {
+    position: relative; /* Change from absolute/fixed if necessary */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
   </style>
 </head>
 
