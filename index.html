@@ -249,26 +249,49 @@
         .gallery-grid img:hover {
             transform: scale(1.05);
         }
+        @media (max-width: 1024px) {
+        body {
+            width: 1024px !important;
+            overflow-x: auto;
+        }
 
-      @media (max-width: 1024px) {
-    /* Hide the text title but keep the image title */
-    .inner_detail-box h1 {
-        display: none !important;
-    }
+        .container {
+            max-width: 1024px !important;
+        }
 
-    /* Hide "About Us" and "Services" sections */
-    #about,
-    #service {
-        display: none !important;
-    }
+        /* Hide the text title but keep the image title */
+        .inner_detail-box h1 {
+            display: none !important;
+        }
 
-    /* Hide carousel arrows */
-    .carousel-control-prev,
-    .carousel-control-next,
-    .carousel_btn_box {
-    display: none !important;
+        /* Remove "About Us" and "Services" sections */
+        #about,
+        #service {
+            display: none !important;
+        }
+
+        /* Hide Carousel Arrows */
+        .carousel-control-prev,
+        .carousel-control-next,
+        .carousel_btn_box {
+            display: none !important;
+        }
+
+        /* Zoom in the Contact Us section */
+        .contact_container {
+            transform: scale(1.2); /* Increase size */
+            transform-origin: center; /* Keep it centered */
+            max-width: 90% !important;
+            padding: 25px !important;
+        }
+
+        .contact_section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
     }
-}
 
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelector("meta[name=viewport]").setAttribute("content", "width=1024, user-scalable=no");
