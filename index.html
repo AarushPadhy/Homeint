@@ -250,52 +250,26 @@
             transform: scale(1.05);
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-              h1 {
-         display: none !important;
-          }
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(3, auto);
-            }
-        }
+      @media (max-width: 1024px) {
+    /* Hide the text title but keep the image title */
+    .inner_detail-box h1 {
+        display: none !important;
+    }
 
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, auto);
-            }
-            .contact-form {
-                padding: 1.5rem;
-            }
-            .gallery_section h2 {
-                font-size: 1.5rem;
-            }
-        }
+    /* Hide "About Us" and "Services" sections */
+    #about,
+    #service {
+        display: none !important;
+    }
 
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: repeat(1, 1fr);
-                grid-template-rows: repeat(8, auto);
-            }
-        }
-
-        .view-all-btn {
-            margin-top: 15px;
-        }
-    @media (max-width: 767px) {
-    .footer_section {
-        display: block !important;
-        position: relative; /* Ensure it stays in the flow */
-        width: 100%;
-        background: #222;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    
+    /* Hide carousel arrows */
+    .carousel-control-prev,
+    .carousel-control-next,
+    .carousel_btn_box {
+    display: none !important;
     }
 }
+
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelector("meta[name=viewport]").setAttribute("content", "width=1024, user-scalable=no");
   });
